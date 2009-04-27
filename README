@@ -1,0 +1,2 @@
+This is a trivial django app in order to demo how to use a
+MultiWidget, as its rather undocumented otherwise.
