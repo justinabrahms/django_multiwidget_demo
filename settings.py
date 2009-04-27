@@ -64,7 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'djnyc_multiwidget.urls'
+ROOT_URLCONF = 'django_multiwidget_demo.urls'
 
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), "templates"))
 
