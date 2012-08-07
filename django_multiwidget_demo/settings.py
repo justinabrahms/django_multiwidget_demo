@@ -51,7 +51,8 @@ MEDIA_URL = 'http://localhost:8000/static/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+# ADMIN_MEDIA_PREFIX = '/media/'
+STATIC_DOC_ROOT = '/static'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'd#zj4%@w63h*xj7$32@h_ubz6@5#0n%0f518)&!e%w5cbo@*!='
