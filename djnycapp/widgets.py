@@ -41,6 +41,9 @@ class AutoCompleteWidget(widgets.MultiWidget):
         return output + mark_safe(self.CLIENT_CODE % (name, name))
 
     class Media:
-        css = {'all': (settings.MEDIA_URL + '/admin/css/jquery.autocomplete.css',)}
-        js = (settings.MEDIA_URL + 'admin/js/jquery-1.3.2.js',
-              settings.MEDIA_URL + 'admin/js/jquery.autocomplete.js')
+        css = {
+            'all': (settings.STATIC_URL + 'admin/css/jquery.autocomplete.css',)
+        }
+
+        js = (settings.STATIC_URL + 'admin/js/jquery-1.3.2.js',
+              settings.STATIC_URL + 'admin/js/jquery.autocomplete.js')

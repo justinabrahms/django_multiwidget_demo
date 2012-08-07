@@ -39,20 +39,19 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
-# Absolute path to the directory that holds media.
+# Absolute filesystem path to the directory that will hold user-uploaded files.  
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "static")
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "media")
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://localhost:8000/static/'
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a          
+# trailing slash.                                                                
+# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"      
+MEDIA_URL = '/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 # ADMIN_MEDIA_PREFIX = '/media/'
-STATIC_DOC_ROOT = '/static'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'd#zj4%@w63h*xj7$32@h_ubz6@5#0n%0f518)&!e%w5cbo@*!='
@@ -64,10 +63,12 @@ TEMPLATE_LOADERS = (
 #   'django.template.loaders.eggs.Loader',                                     
 )    
 
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+MIDDLEWARE_CLASSES = (                                                           
+    'django.middleware.common.CommonMiddleware',                                 
+    'django.contrib.sessions.middleware.SessionMiddleware',                      
+    #'django.middleware.csrf.CsrfViewMiddleware',                                 
+    'django.contrib.auth.middleware.AuthenticationMiddleware',                   
+    'django.contrib.messages.middleware.MessageMiddleware', 
 )
 
 ROOT_URLCONF = 'django_multiwidget_demo.urls'
@@ -82,3 +83,21 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'djnycapp'
 )
+
+if DEBUG:
+    STATIC_URL = "/static/"
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, "/static")
+#    STATICFILES_DIRS = (                                                             
+#        # Put strings here, like "/home/html/static" or "C:/www/django/static".      
+#        # Always use forward slashes, even on Windows.                               
+#        # Don't forget to use absolute paths, not relative paths.                    
+#        os.path.join(PROJECT_ROOT, "/static"),
+#    )
+    STATICFILES_FINDERS = (                                                          
+        'django.contrib.staticfiles.finders.FileSystemFinder',                       
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',                   
+        #    'django.contrib.staticfiles.finders.DefaultStorageFinder',                  
+    ) 
+    INSTALLED_APPS += (
+        'django.contrib.staticfiles',
+    )
