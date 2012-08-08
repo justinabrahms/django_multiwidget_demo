@@ -17,7 +17,8 @@ class AutoCompleteWidget(widgets.MultiWidget):
     """
 
     def __init__(self, attrs=None):
-        widget_list = (widgets.HiddenInput(attrs=attrs), widgets.TextInput(attrs=attrs))
+        widget_list = (widgets.HiddenInput(attrs=attrs),
+                       widgets.TextInput(attrs=attrs))
         super(AutoCompleteWidget, self).__init__(widget_list, attrs)
 
     def decompress(self, value):
