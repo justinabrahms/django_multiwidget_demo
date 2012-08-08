@@ -15,12 +15,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/autocomplete/', 'djnycapp.views.UserAutoComplete'),
-    (r'^admin/(.*)', admin.site.root),
+    (r'^admin/', include(admin.site.urls)),
 )
 
 if settings.DEBUG:
-    urlpatterns += patterns("django.views",
-        url(r"^static/(?P<path>.*)", "static.serve", {
-            "document_root": settings.MEDIA_ROOT,
-        })
-    )
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    urlpatterns += staticfiles_urlpatterns() 
